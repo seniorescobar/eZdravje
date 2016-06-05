@@ -19,7 +19,7 @@
             <span class="sr-only">Prikaži menu</span>
             <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">{ime vaše aplikacije}</a>
+          <a class="navbar-brand" href="index.html">Merilec 3000</a>
         </div>
         <div class="collapse navbar-collapse" id="menujska-vrstica">
           <ul class="nav navbar-nav">
@@ -31,13 +31,17 @@
     </nav>
     <div class="container">
       <div class="row">
-        <div class="col-lg-12 text-center">
+        <div class="col-lg-12">
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">Opis ideje, ki jo aplikacija podpira</h3>
             </div>
             <div class="panel-body">
-              <p><strong>TO-DO</strong>: Na tem mestu je potrebno dodati <strong>osnovni opis ideje rešitve</strong> (kakšen je osnovni SCENARIJ UPORABE, KDO je ciljna publika, za kakšen NAMEN se aplikacija uporablja).</p><p class="text-muted">Opis naj ne bo daljši od 200 besed.</p>
+              <p>Spletna aplikacija Merilec 3000 je namenjena prav vsem, ki bi radi na podlagi svojih osebnih podatkov in meritev izvedeli sledeče: idealno telesno maso, indeks telesne mase in bazalni metabolizem.</p>
+              <p>Ko uporabnik izbere/vpiše svojo EHR identifikacijsko številko, se mu na začetni strani prikažejo zgoraj navedene informacije, vendar v različnih oblikah.</p>
+              <p>V središču je graf, ki prikazuje spreminjanje uporabnikove telesne mase, in njeno približevanje izračunani idealni telesni masi, na podlagi česar lahko uporabnik vidi svoj napredek.</p>
+              <p>Na stranskem tiru sta podani še dve tabeli: tabela izračunov indeksa telesne mase in tabela izračunov bazalnega metabolizma. Sklepamo lahko, da se z izrazoma nekateri še niso srečali, zato je pod vsako tabelo tudi povezava, ki uporabnika preusmeri na ustrezni strani Wikipedije.</p>
+              <p>Uporabnik lahko s seznama izbere temo, o kateri želi pridobiti najnovejše zadetke z omrežja Twitter. Izbira lahko med #healthy, #nutrition in #fitness.</p>
             </div>
           </div>
           <div class="panel panel-default">
@@ -45,7 +49,9 @@
               <h3 class="panel-title">Uporabljeni zunanji viri podatkov</h3>
             </div>
             <div class="panel-body">
-              <p><strong>TO-DO</strong>: Na tem mestu je navesti zunanji vir podatkov (URL naslov), na kakšen način ste ga uporabili (neposredni API klic, uvožena statična datoteka ipd.) in kaj je bil namen uporabe (kako se vključuje v osnovno idejo aplikacije).</p>
+              <p>Uporabljen zunanji vir podatkov je bil Twitter widget. Sicer ne gre za API klic, a lahko tudi brez tega pridobimo najnovejše o določeni temi z omrežja Twitter.</p>
+              <p>Namen je bil uporabniku prikazati ravno to, poleg tega pa lahko na prikaz vpliva tudi sam, saj temo izbere s seznama.</p>
+              <p>Vsa koda je bila generirana na strani https://twitter.com/settings/widgets/new/search.</p>
             </div>
           </div>
           <div class="panel panel-default">
@@ -53,7 +59,7 @@
               <h3 class="panel-title">Master/detail načrtovalski vzorec</h3>
             </div>
             <div class="panel-body">
-              <p><strong>TO-DO</strong>: Na tem mestu morate navesti uporabljen master/detail načrtovalski vzorec in na kakšen način ga nameravate uporabiti.</p>
+              <p>Uporabljen master/detail vzorec je ravno seznam, ki uporabniku omogoča izbiro ene izmed treh tem, pridobljenih z omrežja Twitter.</p>
             </div>
           </div>
           <div class="panel panel-default">
@@ -61,8 +67,9 @@
               <h3 class="panel-title">Uporabljena tehnika za vizualizacijo podatkov</h3>
             </div>
             <div class="panel-body">
-              <p><strong>TO-DO</strong>: Na tem mestu je potrebno navesti uporabljeno tehniko vizualizacije podatkov (za pomoč lahko uporabite primer iz <a href="https://github.com/mbostock/d3/wiki/Gallery" target="_blank">D3.js galerije</a>) in zakaj je bila ta tehnika izbrana.</p>
             </div>
+            <p>Uporabljena tehnika za vizualizacijo podatkov je bila "Multi-Series Line Chart", saj uporabniku prikazuje dva podatka naenkrat, torej njegovo telesno maso ob določenem času, in njegovo takratno idealno maso.</p>
+            <p>Tako lahko uporabnik vidi svoje približevanje/oddaljevanje od "cilja"</p>
           </div>
         </div>
       </div>

@@ -3,13 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>eZdravje :: 4. DN :: OIS 2015/2016</title>
+
     <!--CSS-->
     <link href="knjiznice/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="knjiznice/css/style.css" rel="stylesheet"/>
-    <!--JS-->
-    <script src="knjiznice/js/jquery-2.2.3.min.js"></script>
-    <script src="knjiznice/js/bootstrap.min.js"></script>
-    <script src="knjiznice/js/koda.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -19,23 +16,126 @@
             <span class="sr-only">Prikaži menu</span>
             <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">{ime vaše aplikacije}</a>
+          <a class="navbar-brand" href="index.html">Merilec 3000</a>
         </div>
         <div class="collapse navbar-collapse" id="menujska-vrstica">
           <ul class="nav navbar-nav">
             <li><a href="opis.html">Opis ideje</a></li>
             <li><a href="nacrt.html">Načrt informacijske rešitve</a></li>
-            <li><a href="#">Generiranje podatkov</a></li>
+            <li><a id="generate-data" href="#">Generiranje podatkov</a></li>
           </ul>
         </div>
       </div>
     </nav>
     <div class="container">
       <div class="row">
-        <div class="col-lg-12 text-center">
-          <p class="lead"><strong>TO-DO</strong>: Na tem mestu implementirajte vašo aplikacijo.</p>
+        <div class="col-lg-12">
+          <div id="loader" class="progress hide">
+            <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+              Generiranje...
+            </div>
+          </div>
+
+          <div id="generated-data" class="row">
+            <div class="col-sm-6">
+              <div class="dropdown"  style="margin-bottom: 20px">
+                <button class="btn btn-success btn-block dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  Izberite osebo
+                  <span class="caret"></span>
+                </button>
+                <ul id="list" class="dropdown-menu btn-block " aria-labelledby="dropdownMenu1">
+                  <li><a ehr-id="6e83c63f-eecd-4c61-ae78-1298bf1c9f97" href="#">Adebayo Akinfenwa</a></li>
+                  <li><a ehr-id="add37d81-4fb2-4376-a7bf-76fb2f451899" href="#">Ahmed Musa</a></li>
+                  <li><a ehr-id="cf5fd270-f1bd-4468-98ac-db2e38b650e3" href="#">Emmanuel Emenike</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <form>
+                <div class="input-group" style="margin-bottom: 10px">
+                  <input id="input-ehrid" class="form-control" type="text" placeholder="400d23ec-6d97-4a70-be7d-afd37ba5c0a0"/>
+                  <span class="input-group-btn">
+                    <button id="get-data" class="btn btn-success" type="submit">
+                      Prikaži
+                    </button>
+                  </span>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="hide" id="patient-record">
+
+            <div class="jumbotron">
+              <h1 id="patient-h1">&nbsp;</h1>
+              <!--<form class="form-inline">
+                <p>
+                  Od svoje idealne mase ste oddaljeni le <span id="idealWeightDifference"></span> kilogramov.<br>
+                  <span id="weightLossStatus">Z izgubo</span> <input id="calc-weight" class="form-control" placeholder="0.5" size=5> kg/teden, boste svoj cilj dosegli dne <span id="idealWeightDate" class="text-success">...</span>
+                </p>
+              </form>-->
+            </div>
+
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="dropdown"  style="margin-bottom: 20px">
+                  <button class="btn btn-info btn-block dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Izberi temo
+                    <span class="caret"></span>
+                  </button>
+                  <ul id="twitter-list" class="dropdown-menu btn-block " aria-labelledby="dropdownMenu2">
+                    <li><a href="0">#healthy</a></li>
+                    <li><a href="1">#nutrition</a></li>
+                    <li><a href="2">#fitness</a></li>
+                  </ul>
+                </div>
+
+                <div id="tweets" class="hide">
+                  <a class="twitter-timeline " data-dnt="true" href="https://twitter.com/hashtag/healthy" data-widget-id="738851939186794497">#healthy Tweets</a>
+                  <a class="twitter-timeline " data-dnt="true" href="https://twitter.com/hashtag/nutrition" data-widget-id="739140382856994817">#nutrition Tweets</a>
+                  <a class="twitter-timeline " data-dnt="true" href="https://twitter.com/hashtag/fitness" data-widget-id="739451899674525697">#fitness Tweets</a>
+                </div>
+              </div>
+            </div>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+            <ul class="nav nav-pills nav-justified text-right" role="tablist">
+              <li role="presentation" class="active"><a href="#tab-ideal" aria-controls="tab-bmi" role="tab" data-toggle="tab">Idealna telesna masa</a></li>
+              <li role="presentation"><a href="#tab-bmi" aria-controls="tab-bmi" role="tab" data-toggle="tab">Indeks telesne mase</a></li>
+              <li role="presentation"><a href="#tab-bmr" aria-controls="tab-bmr" role="tab" data-toggle="tab">Bazalni metabolizem</a></li>
+            </ul>
+
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="tab-ideal">
+                <div id="graph"></div>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="tab-bmi">
+                <table id="table-bmi" class="table table-striped"></table>
+                <div class="alert alert-info" role="alert">
+                  Več informacij lahko najdete na naslednji <a class="alert-link" href="https://sl.wikipedia.org/wiki/Indeks_telesne_mase" target="_blank">povezavi.</a>
+                </div>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="tab-bmr">
+                <table id="table-bmr" class="table table-striped"></table>
+                <div class="alert alert-info" role="alert">
+                  Več informacij lahko najdete na naslednji <a class="alert-link" href="https://sl.wikipedia.org/wiki/Bazalna_presnova" target="_blank">povezavi.</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="error" class="alert alert-danger hide">Prišlo je do napake.</div>
+
         </div>
       </div>
     </div>
   </body>
+
+  <!--JS-->
+  <script src="knjiznice/js/jquery-2.2.3.min.js"></script>
+  <script src="knjiznice/js/bootstrap.min.js"></script>
+  <script src="knjiznice/js/d3.min.js"></script>
+  <script src="knjiznice/js/koda.js"></script>
+
 </html>
